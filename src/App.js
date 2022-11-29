@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import Dashbord from './pages/Dashbord';
+
+import Routerpage from './pages/Routerpage';
 
 function App() {
   return (
-  
-    <Dashbord/>
+    <>
+   
+    <div className="App">
+    <Routerpage/>
+    
+    </div>
+    </>
+    
   );
 }
 

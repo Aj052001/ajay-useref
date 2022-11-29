@@ -1,107 +1,21 @@
-import React, { useRef } from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Sidebar from './Sidebar'
 
 
 
 
 export default function Dashbord() {
 
-  
   return (
     <>
    
 
     <div className="layout-wrapper layout-content-navbar">
       <div className="layout-container">
+<Sidebar/>
 
-
-        <aside id="layout-menu" className="layout-menu menu-vertical menu bg-menu-theme">
-          <div className="app-brand demo">
-            <a href="index.html" className="app-brand-link">
-              <img  src="../assets/img/logo1.png" alt=""/>
-            </a>
-
-            <a href="javascript:void(0);" className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-              <i className="bx bx-chevron-left bx-sm align-middle"></i>
-            </a>
-          </div>
-
-          <div className="menu-inner-shadow"></div>
-
-          <ul className="menu-inner py-1">
-
-            <li className="menu-item ">
-              <a href="index.html" className="menu-link">
-                <i className="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
-              </a>
-            </li>
-
-
-            <li className="menu-item active">
-              <a href="javascript:void(0);" className="menu-link menu-toggle">
-                <i className="menu-icon tf-icons bx bx-box"></i>
-                <div data-i18n="Layouts">vendor Management</div>
-              </a>
-
-              <ul className="menu-sub">
-                <li className="menu-item active">
-                  <a href="distributorlist.html" className="menu-link">
-                    <div data-i18n="Without menu">Distributor List</div>
-                  </a>
-                </li>
-                <li className="menu-item">
-                  <a href="distributorrequest.html" className="menu-link">
-                    <div data-i18n="Without navbar">Distributor Request</div>
-                  </a>
-                </li>
-                <li className="menu-item">
-                  <a href="adddis.html" className="menu-link">
-                    <div data-i18n="Container">Add distributor</div>
-                  </a>
-                </li>
-                
-              </ul>
-            </li>
-			
-			
-			 <li className="menu-item">
-              <a href="#" className="menu-link menu-toggle">
-                <i className="menu-icon tf-icons bx bx-box"></i>
-                <div data-i18n="Layouts">Retailer Management</div>
-              </a>
-
-              <ul className="menu-sub">
-                <li className="menu-item">
-                  <a href="retailerlist.html" className="menu-link">
-                    <div data-i18n="Without menu">Retailer List</div>
-                  </a>
-                </li>
-                <li className="menu-item">
-                  <a href="retailerrequest.html" className="menu-link">
-                    <div data-i18n="Without navbar">Retailer Request</div>
-                  </a>
-                </li>
-                <li className="menu-item">
-                  <a href="addret.html" className="menu-link">
-                    <div data-i18n="Container">Add Retailer</div>
-                  </a>
-                </li>
-                
-              </ul>
-            </li>
-			 <li className="menu-item">
-              <a href="#" className="menu-link menu-toggle">
-                <i className="menu-icon tf-icons bx bx-box"></i>
-                <div data-i18n="Layouts">Products</div>
-              </a>
-
-             
-            </li>
-
-          
-             
-          </ul>
-        </aside>
+        
 
         <div className="layout-page">
 
@@ -110,9 +24,9 @@ export default function Dashbord() {
             id="layout-navbar"
           >
             <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a className="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <Link className="nav-item nav-link px-0 me-xl-4" to="javascript:void(0)">
                 <i className="bx bx-menu bx-sm"></i>
-              </a>
+              </Link>
             </div>
 
             <div className="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
@@ -132,27 +46,27 @@ export default function Dashbord() {
               <ul className="navbar-nav flex-row align-items-center ms-auto">
                
                 <li className="nav-item lh-1 me-3">
-                  <a
+                  <Link
                     className="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
+                    to="https://github.com/themeselection/sneat-html-admin-template-free"
                     data-icon="octicon-star"
                     data-size="large"
                     data-show-count="true"
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                    >Star</a
+                    >Star</Link
                   >
                 </li>
 
 
                 <li className="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a className="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <Link className="nav-link dropdown-toggle hide-arrow" to="javascript:void(0);" data-bs-toggle="dropdown">
                     <div className="avatar avatar-online">
                       <img src="../assets/img/avatars/1.png" alt className="w-px-40 h-auto rounded-circle" />
                     </div>
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         <div className="d-flex">
                           <div className="flex-shrink-0 me-3">
                             <div className="avatar avatar-online">
@@ -164,40 +78,40 @@ export default function Dashbord() {
                             <small className="text-muted">Admin</small>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <div className="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         <i className="bx bx-user me-2"></i>
                         <span className="align-middle">My Profile</span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         <i className="bx bx-cog me-2"></i>
                         <span className="align-middle">Settings</span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         <span className="d-flex align-items-center align-middle">
                           <i className="flex-shrink-0 bx bx-credit-card me-2"></i>
                           <span className="flex-grow-1 align-middle">Billing</span>
                           <span className="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                         </span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <div className="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="auth-login-basic.html">
+                      <Link className="dropdown-item" to="auth-login-basic.html">
                         <i className="bx bx-power-off me-2"></i>
                         <span className="align-middle">Log Out</span>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -225,7 +139,7 @@ export default function Dashbord() {
                             your profile.
                           </p>
 
-                          <a href="javascript:;" className="btn btn-sm btn-outline-primary">View Badges</a>
+                          <Link to="javascript:;" className="btn btn-sm btn-outline-primary">View Badges</Link>
                         </div>
                       </div>
                       <div className="col-sm-5 text-center text-sm-left">
@@ -267,8 +181,8 @@ export default function Dashbord() {
                                 <i className="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div className="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                <a className="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a className="dropdown-item" href="javascript:void(0);">Delete</a>
+                                <Link className="dropdown-item" to="javascript:void(0);">View More</Link>
+                                <Link className="dropdown-item" to="javascript:void(0);">Delete</Link>
                               </div>
                             </div>
                           </div>
@@ -301,8 +215,8 @@ export default function Dashbord() {
                                 <i className="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div className="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                <a className="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a className="dropdown-item" href="javascript:void(0);">Delete</a>
+                                <Link className="dropdown-item" to="javascript:void(0);">View More</Link>
+                                <Link className="dropdown-item" to="javascript:void(0);">Delete</Link>
                               </div>
                             </div>
                           </div>
@@ -314,14 +228,14 @@ export default function Dashbord() {
                     </div>
                   </div>
                 </div>
-
                 <div className="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                   <div className="card">
                     <div className="row row-bordered g-0">
                       <div className="col-md-8">
                         <h5 className="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                        <div id="totalRevenueChart" className="px-2"></div>
+                        <div className="px-2" id='totalRevenueChart'></div>
                       </div>
+                     
                       <div className="col-md-4">
                         <div className="card-body">
                           <div className="text-center">
@@ -337,9 +251,9 @@ export default function Dashbord() {
                                 2022
                               </button>
                               <div className="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                <a className="dropdown-item" href="javascript:void(0);">2021</a>
-                                <a className="dropdown-item" href="javascript:void(0);">2020</a>
-                                <a className="dropdown-item" href="javascript:void(0);">2019</a>
+                                <Link className="dropdown-item" to="javascript:void(0);">2021</Link>
+                                <Link className="dropdown-item" to="javascript:void(0);">2020</Link>
+                                <Link className="dropdown-item" to="javascript:void(0);">2019</Link>
                               </div>
                             </div>
                           </div>
@@ -393,8 +307,8 @@ export default function Dashbord() {
                                 <i className="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div className="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                <a className="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a className="dropdown-item" href="javascript:void(0);">Delete</a>
+                                <Link className="dropdown-item" to="javascript:void(0);">View More</Link>
+                                <Link className="dropdown-item" to="javascript:void(0);">Delete</Link>
                               </div>
                             </div>
                           </div>
@@ -423,8 +337,8 @@ export default function Dashbord() {
                                 <i className="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div className="dropdown-menu" aria-labelledby="cardOpt1">
-                                <a className="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a className="dropdown-item" href="javascript:void(0);">Delete</a>
+                                <Link className="dropdown-item" to="javascript:void(0);">View More</Link>
+                                <Link className="dropdown-item" to="javascript:void(0);">Delete</Link>
                               </div>
                             </div>
                           </div>
@@ -480,9 +394,9 @@ export default function Dashbord() {
                           <i className="bx bx-dots-vertical-rounded"></i>
                         </button>
                         <div className="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                          <a className="dropdown-item" href="javascript:void(0);">Select All</a>
-                          <a className="dropdown-item" href="javascript:void(0);">Refresh</a>
-                          <a className="dropdown-item" href="javascript:void(0);">Share</a>
+                          <Link className="dropdown-item" to="javascript:void(0);">Select All</Link>
+                          <Link className="dropdown-item" to="javascript:void(0);">Refresh</Link>
+                          <Link className="dropdown-item" to="javascript:void(0);">Share</Link>
                         </div>
                       </div>
                     </div>
@@ -639,9 +553,9 @@ export default function Dashbord() {
                           <i className="bx bx-dots-vertical-rounded"></i>
                         </button>
                         <div className="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                          <a className="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                          <a className="dropdown-item" href="javascript:void(0);">Last Month</a>
-                          <a className="dropdown-item" href="javascript:void(0);">Last Year</a>
+                          <Link className="dropdown-item" to="javascript:void(0);">Last 28 Days</Link>
+                          <Link className="dropdown-item" to="javascript:void(0);">Last Month</Link>
+                          <Link className="dropdown-item" to="javascript:void(0);">Last Year</Link>
                         </div>
                       </div>
                     </div>
@@ -755,21 +669,21 @@ export default function Dashbord() {
                     document.write(new Date().getFullYear());
                   </script>
                   , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" className="footer-link fw-bolder">ThemeSelection</a>
+                  <Link to="https://themeselection.com" target="_blank" className="footer-link fw-bolder">ThemeSelection</Link>
                 </div>
                 <div>
-                  <a href="https://themeselection.com/license/" className="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" className="footer-link me-4">More Themes</a>
+                  <Link to="https://themeselection.com/license/" className="footer-link me-4" target="_blank">License</Link>
+                  <Link to="https://themeselection.com/" target="_blank" className="footer-link me-4">More Themes</Link>
 
                   <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    to="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
                     target="_blank"
                     className="footer-link me-4"
                     >Documentation</a
                   >
 
                   <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    to="https://github.com/themeselection/sneat-html-admin-template-free/issues"
                     target="_blank"
                     className="footer-link me-4"
                     >Support</a
