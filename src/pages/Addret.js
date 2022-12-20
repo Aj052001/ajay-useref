@@ -3,7 +3,38 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
+import { useState } from "react";
 export default function Addret() {
+  const [retailer, setRetailer] = useState({
+    typeOfBusiness: "",
+    businessName: "",
+    ownerName: "",
+    businessAddress: "",
+    pinCode: "",
+    city: "",
+    area: "",
+    state: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    email: "",
+    pharmacistName: "",
+    pharmacistPhoneNumber: "",
+    addDrugLicenceNumber: "",
+    addDrugLicenceImage: "",
+    addGstNumber: "",
+    addGstImage: "",
+    panNumber: "",
+  });
+  console.log(retailer);
+
+  let name, value;
+  function handle(e) {
+    name = e.target.name;
+    value = e.target.value;
+    setRetailer({ ...retailer, [name]: value });
+  }
+
   let history = useHistory();
   function handleclick() {
     history.push("/");
@@ -34,23 +65,29 @@ export default function Addret() {
                         <div className="row">
                           <div className="mb-3 col-md-6">
                             <label
-                              for="firstName"
+                              for="typeOfBusiness"
                               className="form-label float-start"
                             >
-                              Owner Name
+                              Type of Business
                             </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="firstName"
-                              name="firstName"
-                              value="John"
-                              autofocus
-                            />
+                            <select
+                              id="typeOfBusiness"
+                              name="typeOfBusiness"
+                              value={retailer.typeOfBusiness}
+                              onChange={handle}
+                              className="select2 form-select"
+                              // onChange={handle}
+                            >
+                              <option value="">Select </option>
+                              <option value="Chemist">Chemist</option>
+                              <option value="Hospital">Hospital</option>
+                              <option value="Doctor">Doctor</option>
+                            </select>
                           </div>
+
                           <div className="mb-3 col-md-6">
                             <label
-                              for="lastName"
+                              for="businessName"
                               className="form-label float-start"
                             >
                               Business Name
@@ -58,14 +95,34 @@ export default function Addret() {
                             <input
                               className="form-control"
                               type="text"
-                              name="lastName"
-                              id="lastName"
-                              value="Doe"
+                              name="businessName"
+                              id="businessName"
+                              value={retailer.businessName}
+                              onChange={handle}
+                              placeholder={"Enter business name"}
                             />
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
-                              for="organization"
+                              for="ownerName"
+                              className="form-label float-start"
+                            >
+                              Owner Name
+                            </label>
+                            <input
+                              className="form-control"
+                              type="text"
+                              id="ownerName"
+                              name="ownerName"
+                              placeholder="Owner name"
+                              value={retailer.ownerName}
+                              onChange={handle}
+                              autofocus
+                            />
+                          </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="businessAddress"
                               className="form-label float-start"
                             >
                               Business Type
@@ -73,10 +130,118 @@ export default function Addret() {
                             <input
                               type="text"
                               className="form-control"
-                              id="organization"
-                              name="organization"
-                              value="ThemeSelection"
+                              id="businessAddress"
+                              name="businessAddress"
+                              value={retailer.businessAddress}
+                              onChange={handle}
+                              placeholder="Business address"
                             />
+                          </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="pinCode"
+                              className="form-label float-start"
+                            >
+                              Pin Code
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="pinCode"
+                              name="pinCode"
+                              placeholder="231465"
+                              maxlength="6"
+                              value={retailer.pinCode}
+                              onChange={handle}
+                            />
+                          </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="city"
+                              className="form-label float-start"
+                            >
+                              City
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="city"
+                              name="city"
+                              placeholder="City"
+                              value={retailer.city}
+                              onChange={handle}
+                            />
+                          </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="area"
+                              className="form-label float-start"
+                            >
+                              Area
+                            </label>
+                            <input
+                              className="form-control"
+                              type="text"
+                              id="area"
+                              name="area"
+                              placeholder="Enter your business area"
+                              value={retailer.area}
+                              onChange={handle}
+                            />
+                          </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="state"
+                              className="form-label float-start"
+                            >
+                              select state
+                            </label>
+                            <select
+                              id="state"
+                              name="state"
+                              className="select2 form-select"
+                              onChange={handle}
+                            >
+                              <option value="">Select </option>
+                              <option value="Andhra Pradesh">
+                                Andhra Pradesh
+                              </option>
+                              <option value="Arunachal Pradesh">
+                                Arunachal Pradesh
+                              </option>
+                              <option value="Assam">Assam</option>
+                              <option value="Bihar">Bihar</option>
+                              <option value="Chhattisgarh">Chhattisgarh</option>
+                              <option value="Goa">Goa</option>
+                              <option value="Gujrat">Gujrat</option>
+                              <option value="Haryana">Haryana</option>
+                              <option value="Himachal Pradesh">
+                                Himachal Pradesh
+                              </option>
+                              <option value="Jharkhand">Jharkhand</option>
+                              <option value="Karnataka">Karnataka</option>
+                              <option value="Kerala">Kerala</option>
+                              <option value="Madhya Pradesh">
+                                Madhya Pradesh
+                              </option>
+                              <option value="Maharashtra">Maharashtra</option>
+                              <option value="Manipur">Manipur</option>
+                              <option value="Meghalaya">Meghalaya</option>
+                              <option value="Mizoram">Mizoram</option>
+                              <option value="Nagaland">Nagaland</option>
+                              <option value="Odisha">Odisha</option>
+                              <option value="Punjab">Punjab</option>
+                              <option value="Rajasthan">Rajasthan</option>
+                              <option value="Sikkim">Sikkim</option>
+                              <option value="Tamil Nadu">Tamil Nadu</option>
+                              <option value="Telangana">Telangana</option>
+                              <option value="Tripura">Tripura</option>
+                              <option value="Uttarakhand">Uttarakhand</option>
+                              <option value="Uttar Pradesh">
+                                Uttar Pradesh
+                              </option>
+                              <option value="West Bengal">West Bengal</option>
+                            </select>
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
@@ -88,13 +253,49 @@ export default function Addret() {
                             <div className="input-group input-group-merge">
                               <span className="input-group-text">IN (+91)</span>
                               <input
+                                className="form-control"
                                 type="text"
                                 id="phoneNumber"
                                 name="phoneNumber"
-                                className="form-control"
                                 placeholder="202 555 0111"
+                                value={retailer.phoneNumber}
+                                onChange={handle}
                               />
                             </div>
+                          </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="password"
+                              className="form-label float-start"
+                            >
+                              password
+                            </label>
+                            <input
+                              className="form-control"
+                              type="text"
+                              id="password"
+                              name="password"
+                              value={retailer.password}
+                              onChange={handle}
+                              placeholder="12123323423"
+                            />
+                          </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="confirmPassword"
+                              className="form-label float-start"
+                            >
+                              Confirm Password
+                            </label>
+                            <input
+                              className="form-control"
+                              type="text"
+                              id="confirmPassword"
+                              name="confirmPassword"
+                              value={retailer.confirmPassword}
+                              onChange={handle}
+                              placeholder="12123323423"
+                            />
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
@@ -108,147 +309,151 @@ export default function Addret() {
                               type="text"
                               id="email"
                               name="email"
-                              value="john.doe@example.com"
                               placeholder="john.doe@example.com"
+                              value={retailer.email}
+                              onChange={handle}
                             />
                           </div>
 
                           <div className="mb-3 col-md-6">
                             <label
-                              for="zipCode"
                               className="form-label float-start"
+                              for="pharmacistName"
                             >
-                              Postal Code
+                              Pharmacist name
                             </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="zipCode"
-                              name="zipCode"
-                              placeholder="231465"
-                              maxlength="6"
-                            />
-                          </div>
-                          <div className="mb-3 col-md-6">
-                            <label
-                              for="address"
-                              className="form-label float-start"
-                            >
-                              City
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="City"
-                              name="City"
-                              placeholder="City"
-                            />
-                          </div>
-                          <div className="mb-3 col-md-6">
-                            <label
-                              for="state"
-                              className="form-label float-start"
-                            >
-                              Area
-                            </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="Area"
-                              name="Area"
-                              placeholder="Area"
-                            />
+                            <div className="input-group input-group-merge">
+                              <input
+                                className="form-control"
+                                type="text"
+                                id="pharmacistName"
+                                name="pharmacistName"
+                                placeholder="enter pharmacist name"
+                                value={retailer.pharmacistName}
+                                onChange={handle}
+                              />
+                            </div>
                           </div>
 
                           <div className="mb-3 col-md-6">
                             <label
-                              for="timeZones"
                               className="form-label float-start"
+                              for="pharmacistPhoneNumber"
                             >
-                              Drug Licence No
+                              Pharmacist Phone number
                             </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="12123323423"
-                            />
+                            <div className="input-group input-group-merge">
+                              <span className="input-group-text">IN (+91)</span>
+
+                              <input
+                                className="form-control"
+                                type="text"
+                                id="pharmacistPhoneNumber"
+                                name="pharmacistPhoneNumber"
+                                placeholder="phone numberF"
+                                value={retailer.pharmacistPhoneNumber}
+                                onChange={handle}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="mb-3 col-md-6">
+                            <label
+                              className="form-label float-start"
+                              for="addDrugLicenceNumber"
+                            >
+                              add drug licence number
+                            </label>
+                            <div className="input-group input-group-merge">
+                              <input
+                                className="form-control"
+                                type="text"
+                                id="addDrugLicenceNumber"
+                                name="addDrugLicenceNumber"
+                                placeholder="add drug licence number"
+                                value={retailer.addDrugLicenceNumber}
+                                onChange={handle}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="mb-3 col-md-6">
+                            <label
+                              className="form-label float-start"
+                              for="addDrugLicenceImage"
+                            >
+                              add drug licence image
+                            </label>
+                            <div className="input-group input-group-merge">
+                              <input
+                                className="form-control"
+                                type="file"
+                                id="addDrugLicenceImage"
+                                name="addDrugLicenceImage"
+                                placeholder="enter pharmacist name"
+                                value={retailer.addDrugLicenceImage}
+                                onChange={handle}
+                              />
+                            </div>
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
-                              for="timeZones"
                               className="form-label float-start"
+                              for="addGstNumber"
                             >
-                              Drug Licence img
+                              add gst number
                             </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="view/img.jpg"
-                            />
+                            <div className="input-group input-group-merge">
+                              <input
+                                className="form-control"
+                                type="text"
+                                id="addGstNumber"
+                                name="addGstNumber"
+                                placeholder="add gst number"
+                                value={retailer.addGstNumber}
+                                onChange={handle}
+                              />
+                            </div>
                           </div>
+
                           <div className="mb-3 col-md-6">
                             <label
-                              for="timeZones"
                               className="form-label float-start"
+                              for="addGstImage"
                             >
-                              Gst No
+                              add gst image
                             </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="12123323423"
-                            />
+                            <div className="input-group input-group-merge">
+                              <input
+                                className="form-control"
+                                type="file"
+                                id="addGstImage"
+                                name="addGstImage"
+                                placeholder="enter pharmacist name"
+                                value={retailer.addGstImage}
+                                onChange={handle}
+                              />
+                            </div>
                           </div>
+
                           <div className="mb-3 col-md-6">
                             <label
-                              for="timeZones"
                               className="form-label float-start"
+                              for="panNumber"
                             >
-                              Gst img
+                              pan number
                             </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="view/img.jpg"
-                            />
-                          </div>
-                          <div className="mb-3 col-md-6">
-                            <label
-                              for="timeZones"
-                              className="form-label float-start"
-                            >
-                              Pan No
-                            </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="12123323423"
-                            />
-                          </div>
-                          <div className="mb-3 col-md-6">
-                            <label
-                              for="timeZones"
-                              className="form-label float-start"
-                            >
-                              Pan img
-                            </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="view/img.jpg"
-                            />
+                            <div className="input-group input-group-merge">
+                              <input
+                                className="form-control"
+                                type="text"
+                                id="panNumber"
+                                name="panNumber"
+                                placeholder="pan number"
+                                value={retailer.panNumber}
+                                onChange={handle}
+                              />
+                            </div>
                           </div>
                         </div>
                         <div className="mt-2">

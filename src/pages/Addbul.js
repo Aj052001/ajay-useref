@@ -2,8 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { useState } from "react";
 
 export default function Addbul() {
+  const [bul, setBul] = useState({
+    csvFile: "",
+  });
+  console.log(bul);
+
+  let name, value;
+  function handle(e) {
+    name = e.target.name;
+    value = e.target.value;
+    setBul({ ...bul, [name]: value });
+  }
   return (
     <>
       <div className="layout-wrapper layout-content-navbar">
@@ -18,10 +30,8 @@ export default function Addbul() {
                 <div className="row">
                   <div className="card mb-12">
                     <div className="card-header d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0">Upload csv download sample file</h5>
-                      <small className="text-muted float-end">
-                        Default label
-                      </small>
+                      <h5 className="mb-0">Upload csv file</h5>
+                      
                     </div>
 
                     <hr className="my-0" />
@@ -32,22 +42,47 @@ export default function Addbul() {
                         onsubmit="return false"
                       >
                         <div className="row">
-                          <div className="mb-3 col-md-6">
+                        <div className="mb-3 col-md-6">
                             <label
                               className="form-label float-start"
-                              for="phoneNumber"
-                            ></label>
+                              for="csvFile"
+                            >
+                            </label>
                             <div className="input-group input-group-merge">
                               <input
-                                type="file"
-                                id="phoneNumber"
-                                name="phoneNumber"
                                 className="form-control"
-                                placeholder="upload file"
+                                type="file"
+                                id="csvFile"
+                                name="csvFile"
+                                placeholder="enter pharmacist name"
+                                value={bul.csvFile}
+                                onChange={handle}
                               />
                             </div>
                           </div>
+
+                          
+                          <div className="mb-3 col-md-6">
+                          <div className="mt-2">
+                          <button
+                            className="btn btn-primary me-2"
+                           
+                          >
+                            <a href="https://www.google.co.in/"
+                            target={"_blank"} > Download sample file</a>
+                           
+                          </button>
+                          
                         </div>
+                          </div>
+                        </div>
+
+
+
+
+
+
+
                         <div className="mt-2">
                           <button
                             type="submit"

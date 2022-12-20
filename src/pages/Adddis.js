@@ -2,8 +2,78 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-
+import { useState } from "react";
 export default function Adddis() {
+  const [distributor, setDistributor] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+    pinCode:"",
+    city:"",
+    area:"",
+    state:"",
+    businessName:"",
+    companyName:"",
+    password: "",
+    confirmPassword: "",
+    distributorCode:"",
+    distributorType:""
+  });
+  console.log(distributor)
+
+  let name ,value;
+  function handle(e) {
+   
+    name = e.target.name;
+    value = e.target.value;
+    setDistributor({ ...distributor, [name]: value });
+  }
+
+    // //data send in backend by using async function postData
+    // const postData = async (e) => {
+    //   e.preventDefault();
+  
+    //   //object destructing
+    //   const {
+    //     firstName,
+    //     lastName,
+    //     email,
+    //     gender,
+    //     phone,
+    //     age,
+    //     password,
+    //     cpassword,
+    //   } = user;
+  
+    //   const res = await fetch("/register", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       firstName,
+    //       lastName,
+    //       email,
+    //       gender,
+    //       phone,
+    //       age,
+    //       password,
+    //       cpassword,
+    //     }),
+    //   });
+  
+    //   const data = await res.json();
+  
+    //   if (res.status === 422 || !data) {
+    //     window.alert("Invalid Registration");
+    //     console.log("Invalid Registration");
+    //   } else {
+    //     window.alert("Registration Successfully");
+    //     console.log("Registration Successfully");
+    //     history.push("/login");
+    //   }
+    // };
   return (
     <>
       <div className="layout-wrapper layout-content-navbar">
@@ -25,6 +95,7 @@ export default function Adddis() {
                     </div>
 
                     <hr className="my-0" />
+
                     <div className="card-body">
                       <form
                         id="formAccountSettings"
@@ -44,8 +115,9 @@ export default function Adddis() {
                               type="text"
                               id="firstName"
                               name="firstName"
-                              value="John"
-                              autofocus
+                              value={distributor.firstName}
+                              onChange={handle}
+                              placeholder="Enter first name"
                             />
                           </div>
                           <div className="mb-3 col-md-6">
@@ -60,7 +132,9 @@ export default function Adddis() {
                               type="text"
                               name="lastName"
                               id="lastName"
-                              value="Doe"
+                              placeholder="Enter last name"
+                              value={distributor.lastName}
+                              onChange={handle}
                             />
                           </div>
                           <div className="mb-3 col-md-6">
@@ -73,11 +147,14 @@ export default function Adddis() {
                             <div className="input-group input-group-merge">
                               <span className="input-group-text">IN (+91)</span>
                               <input
+                                className="form-control"
                                 type="text"
                                 id="phoneNumber"
                                 name="phoneNumber"
-                                className="form-control"
                                 placeholder="202 555 0111"
+                                value={distributor.phoneNumber}
+                                onChange={handle}
+
                               />
                             </div>
                           </div>
@@ -93,44 +170,33 @@ export default function Adddis() {
                               type="text"
                               id="email"
                               name="email"
-                              value="john.doe@example.com"
                               placeholder="john.doe@example.com"
+                              value={distributor.email}
+                              onChange={handle}
                             />
                           </div>
+                        
                           <div className="mb-3 col-md-6">
                             <label
-                              for="organization"
+                              for="pinCode"
                               className="form-label float-start"
                             >
-                              Business name
+                              Pin Code
                             </label>
                             <input
                               type="text"
                               className="form-control"
-                              id="organization"
-                              name="organization"
-                              value="ThemeSelection"
-                            />
-                          </div>
-                          <div className="mb-3 col-md-6">
-                            <label
-                              for="zipCode"
-                              className="form-label float-start"
-                            >
-                              Postal Code
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="zipCode"
-                              name="zipCode"
+                              id="pinCode"
+                              name="pinCode"
                               placeholder="231465"
                               maxlength="6"
+                              value={distributor.pinCode}
+                              onChange={handle}
                             />
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
-                              for="address"
+                              for="city"
                               className="form-label float-start"
                             >
                               City
@@ -138,14 +204,16 @@ export default function Adddis() {
                             <input
                               type="text"
                               className="form-control"
-                              id="City"
-                              name="City"
+                              id="city"
+                              name="city"
                               placeholder="City"
+                              value={distributor.city}
+                              onChange={handle}
                             />
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
-                              for="state"
+                              for="area"
                               className="form-label float-start"
                             >
                               Area
@@ -153,138 +221,183 @@ export default function Adddis() {
                             <input
                               className="form-control"
                               type="text"
-                              id="Area"
-                              name="Area"
-                              placeholder="Area"
+                              id="area"
+                              name="area"
+                              placeholder="Enter your business area"
+                              value={distributor.area}
+                              onChange={handle}
                             />
                           </div>
 
                           <div className="mb-3 col-md-6">
                             <label
-                              className="form-label float-start"
-                              for="country"
-                            >
-                              Distributor Code
-                            </label>
-                            <select
-                              id="country"
-                              className="select2 form-select"
-                            >
-                              <option value="">Select</option>
-                              <option value="Australia">Australia</option>
-                              <option value="Bangladesh">Bangladesh</option>
-                              <option value="Belarus">Belarus</option>
-                              <option value="Brazil">Brazil</option>
-                              <option value="Canada">Canada</option>
-                              <option value="China">China</option>
-                              <option value="France">France</option>
-                              <option value="Germany">Germany</option>
-                              <option value="India">India</option>
-                              <option value="Indonesia">Indonesia</option>
-                              <option value="Israel">Israel</option>
-                              <option value="Italy">Italy</option>
-                              <option value="Japan">Japan</option>
-                              <option value="Korea">Korea, Republic of</option>
-                              <option value="Mexico">Mexico</option>
-                              <option value="Philippines">Philippines</option>
-                              <option value="Russia">Russian Federation</option>
-                              <option value="South Africa">South Africa</option>
-                              <option value="Thailand">Thailand</option>
-                              <option value="Turkey">Turkey</option>
-                              <option value="Ukraine">Ukraine</option>
-                              <option value="United Arab Emirates">
-                                United Arab Emirates
-                              </option>
-                              <option value="United Kingdom">
-                                United Kingdom
-                              </option>
-                              <option value="United States">
-                                United States
-                              </option>
-                            </select>
-                          </div>
-                          <div className="mb-3 col-md-6">
-                            <label
-                              for="language"
+                              for="state"
                               className="form-label float-start"
                             >
-                              Distributor Type
+                              select state
                             </label>
                             <select
-                              id="language"
+                              id="state"
+                              name="state"
                               className="select2 form-select"
+                              onChange={handle}
                             >
                               <option value="">Select </option>
-                              <option value="en">English</option>
-                              <option value="fr">French</option>
-                              <option value="de">German</option>
-                              <option value="pt">Portuguese</option>
+                              <option value="Andhra Pradesh">
+                                Andhra Pradesh
+                              </option>
+                              <option value="Arunachal Pradesh">
+                                Arunachal Pradesh
+                              </option>
+                              <option value="Assam">Assam</option>
+                              <option value="Bihar">Bihar</option>
+                              <option value="Chhattisgarh">Chhattisgarh</option>
+                              <option value="Goa">Goa</option>
+                              <option value="Gujrat">Gujrat</option>
+                              <option value="Haryana">Haryana</option>
+                              <option value="Himachal Pradesh">
+                                Himachal Pradesh
+                              </option>
+                              <option value="Jharkhand">Jharkhand</option>
+                              <option value="Karnataka">Karnataka</option>
+                              <option value="Kerala">Kerala</option>
+                              <option value="Madhya Pradesh">
+                                Madhya Pradesh
+                              </option>
+                              <option value="Maharashtra">Maharashtra</option>
+                              <option value="Manipur">Manipur</option>
+                              <option value="Meghalaya">Meghalaya</option>
+                              <option value="Mizoram">Mizoram</option>
+                              <option value="Nagaland">Nagaland</option>
+                              <option value="Odisha">Odisha</option>
+                              <option value="Punjab">Punjab</option>
+                              <option value="Rajasthan">Rajasthan</option>
+                              <option value="Sikkim">Sikkim</option>
+                              <option value="Tamil Nadu">Tamil Nadu</option>
+                              <option value="Telangana">Telangana</option>
+                              <option value="Tripura">Tripura</option>
+                              <option value="Uttarakhand">Uttarakhand</option>
+                              <option value="Uttar Pradesh">
+                                Uttar Pradesh
+                              </option>
+                              <option value="West Bengal">West Bengal</option>
                             </select>
                           </div>
-                          <div className="mb-3 col-md-6">
+                            <div className="mb-3 col-md-6">
                             <label
-                              for="timeZones"
+                              for="businessName"
                               className="form-label float-start"
                             >
-                              Gst No
+                              Business name
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="businessName"
+                              name="businessName"
+                              value={distributor.businessName}
+                              onChange={handle}
+                              placeholder="Enter business name"
+                            />
+                          </div>
+                            <div className="mb-3 col-md-6">
+                            <label
+                              for="companyName"
+                              className="form-label float-start"
+                            >
+                              Company Name
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="companyName"
+                              name="companyName"
+                              value={distributor.companyName}
+                              onChange={handle}
+                              placeholder="Enter business name"
+                            />
+                          </div>
+
+                        
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="password"
+                              className="form-label float-start"
+                            >
+                              password
                             </label>
                             <input
                               className="form-control"
                               type="text"
-                              id="gst"
-                              name="gst"
+                              id="password"
+                              name="password"
+                              value={distributor.password}
+                              onChange={handle}
                               placeholder="12123323423"
                             />
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
-                              for="timeZones"
+                              for="confirmPassword"
                               className="form-label float-start"
                             >
-                              Gst img
+                              Confirm Password
                             </label>
                             <input
                               className="form-control"
                               type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="view/img.jpg"
-                            />
-                          </div>
-                          <div className="mb-3 col-md-6">
-                            <label
-                              for="timeZones"
-                              className="form-label loat-start"
-                            >
-                              Pan No
-                            </label>
-                            <input
-                              className="form-control"
-                              type="text"
-                              id="gst"
-                              name="gst"
+                              id="confirmPassword"
+                              name="confirmPassword"
+                              value={distributor.confirmPassword}
+                              onChange={handle}
                               placeholder="12123323423"
                             />
                           </div>
                           <div className="mb-3 col-md-6">
                             <label
-                              for="timeZones"
+                              for="distributorCode"
                               className="form-label float-start"
                             >
-                              Pan img
+                             Distributor Code
+                              
                             </label>
                             <input
                               className="form-control"
                               type="text"
-                              id="gst"
-                              name="gst"
-                              placeholder="view/img.jpg"
+                              id="distributorCode"
+                              name="distributorCode"
+                              placeholder="121233"
+                              value={distributor.distributorCode}
+                              onChange={handle}
                             />
+                          </div>
+                        
+                          <div className="mb-3 col-md-6">
+                            <label
+                              for="distributorType"
+                              className="form-label float-start"
+                            >
+                             Distributor Type
+                            </label>
+                            <select
+                              id="distributorType"
+                              name="distributorType"
+                              className="select2 form-select"
+                              onChange={handle}
+                            >
+                              <option value="">Select </option>
+                              <option  value="Generic Distributor">Generic Distributor</option>
+                              <option  value="OTC Distributor">OTC Distributor</option>
+                              <option  value="Branded Distributor">Branded Distributor</option>
+                             
+                            </select>
                           </div>
                         </div>
                         <div className="mt-2">
                           <button
                             type="submit"
+                            value="Register"
+                            //  onClick={postData}
                             className="btn btn-primary me-2"
                           >
                             Save

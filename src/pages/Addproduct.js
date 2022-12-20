@@ -2,8 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { useState } from "react";
 
 export default function Addproduct() {
+  const [product, setProduct] = useState({
+    productName: "",
+    mnfName: "",
+    medType: "",
+    discription: "",
+    taxes: "",
+  });
+  console.log(product);
+
+  let name, value;
+  function handle(e) {
+    name = e.target.name;
+    value = e.target.value;
+    setProduct({ ...product, [name]: value });
+  }
   return (
     <>
       <div className="layout-wrapper layout-content-navbar">
@@ -34,7 +50,7 @@ export default function Addproduct() {
                         <div className="row">
                           <div className="mb-3 col-md-6">
                             <label
-                              for="firstName"
+                              for="businessName"
                               className="form-label float-start"
                             >
                               Product Name
@@ -42,73 +58,87 @@ export default function Addproduct() {
                             <input
                               className="form-control"
                               type="text"
-                              id="firstName"
-                              name="firstName"
-                              value="Adderall"
-                              autofocus
+                              name="productName"
+                              id="productName"
+                              value={product.productName}
+                              onChange={handle}
+                              placeholder={"Enter product name"}
                             />
                           </div>
+
                           <div className="mb-3 col-md-6">
                             <label
-                              for="lastName"
+                              for="mnfName"
                               className="form-label float-start"
                             >
-                              Mnf Type
+                              mnf Name
                             </label>
                             <input
                               className="form-control"
                               type="text"
-                              name="lastName"
-                              id="lastName"
-                              value="Company"
+                              name="mnfName"
+                              id="mnfName"
+                              value={product.mnfName}
+                              onChange={handle}
+                              placeholder={"Enter mnf name"}
                             />
                           </div>
+
                           <div className="mb-3 col-md-6">
                             <label
+                              for="medType"
                               className="form-label float-start"
-                              for="phoneNumber "
                             >
-                              Med Type
+                              MNF type
                             </label>
-                            <div className="input-group input-group-merge">
-                              <input
-                                type="text"
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                className="form-control"
-                                placeholder="Genric"
-                              />
-                            </div>
+                            <select
+                              id="medType"
+                              name="medType"
+                              value={product.medType}
+                              onChange={handle}
+                              className="select2 form-select"
+                              // onChange={handle}
+                            >
+                              <option value="">Select </option>
+                              <option value="OTC">OTC</option>
+                              <option value="Generic">Generic</option>
+                              <option value="Branded">Branded</option>
+                            </select>
                           </div>
+
                           <div className="mb-3 col-md-6">
                             <label
-                              for="email"
+                              for="discription"
                               className="form-label float-start"
                             >
-                              Discription
+                              Disdription
                             </label>
                             <input
                               className="form-control"
                               type="text"
-                              id="email"
-                              name="email"
-                              value=""
-                              placeholder="Discription"
+                              name="discription"
+                              id="discription"
+                              value={product.discription}
+                              onChange={handle}
+                              placeholder={"Enter discription"}
                             />
                           </div>
+
                           <div className="mb-3 col-md-6">
                             <label
-                              for="organization"
+                              for="taxes"
                               className="form-label float-start"
                             >
                               Taxes
                             </label>
                             <input
-                              type="text"
                               className="form-control"
-                              id="organization"
-                              name="organization"
-                              value="0000"
+                              type="text"
+                              name="taxes"
+                              id="taxes"
+                              value={product.taxes}
+                              onChange={handle}
+                              placeholder={"taxes"}
                             />
                           </div>
                         </div>
